@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
+</head>
+
+<body>
     <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <p>Welcome to<%= title %></p>
 
     <input type="button" value="Magic Button" id="magic-btn">
 
@@ -16,5 +18,19 @@
     <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
 
     <script src="/javascripts/script.js" charset="utf-8"></script>
-  </body>
+
+    <script type="text/javascript">
+  var socket = io();
+
+  socket.on('connect', function() {
+    console.log('Connected!');
+  });
+
+  socket.on('tweets', function(tweet) {
+    console.log(tweet);
+  });
+</script>
+
+</body>
+
 </html>
