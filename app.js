@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').config({silent: true});
 
 var express = require('express');
 var path = require('path');
@@ -10,6 +10,8 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+//added twitter and look further down for the app.use
+var tweets = require('./routes/tweets');
 
 var app = express();
 
@@ -27,6 +29,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+//added /tweets for it to use, now change the /tweets to just / in the router
+app.use('/tweets', tweets);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
